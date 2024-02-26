@@ -13,11 +13,16 @@ function addBooktoLibrary (book){
     myLibrary.push(book); 
 }
 
+//event listener for prompting the modal dialog and the exit button
 const addBookButton = document.querySelector("#add-button");
 const prompt = document.querySelector("dialog");
 addBookButton.addEventListener('click', ()=>{
     prompt.showModal(); 
 })
+document.querySelector("#exit").addEventListener('click', ()=>{
+    prompt.close();
+})
+
 
 const animalFarm = new Book("Animal Farm", "George Orwell", 200); 
 const book2 = new Book("generic book", "Jesus", 300); 
