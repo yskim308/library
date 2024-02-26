@@ -13,6 +13,18 @@ function addBooktoLibrary (book){
     myLibrary.push(book); 
 }
 
+function updateLibrary (){
+    //clear the library 
+    const cards = document.querySelectorAll(".card"); 
+    cards.forEach((card)=>{
+        card.remove();
+    })
+
+    myLibrary.forEach((book)=>{
+        addBookToDOM(book);
+    })
+}
+
 function addBookToDOM (book) {
     const container = document.querySelector(".content");
     const card = document.createElement("div")
@@ -55,12 +67,11 @@ const prompt = document.querySelector("dialog");
 addBookButton.addEventListener('click', ()=>{
     prompt.showModal(); 
 })
-
 document.querySelector("#exit").addEventListener('click', ()=>{
     prompt.close();
 })
 
-//event listener for the submit button of the dialog'
+//event listener for the submit button of the dialog and adding books 
 document.querySelector("#book-input").addEventListener('submit', (event)=>{
     event.preventDefault();
     let title = document.querySelector("#title").value; 
@@ -70,12 +81,13 @@ document.querySelector("#book-input").addEventListener('submit', (event)=>{
     
     const newBook = new Book(title, author, pages);
     addBooktoLibrary(newBook);
-    addBookToDOM(newBook);
+    updateLibrary();
 
     event.target.reset(); 
     prompt.close();
 })
 
+//initial creation of books 
 const animalFarm = new Book("Animal Farm", "George Orwell", 200); 
 const book2 = new Book("generic book", "Jesus", 300); 
 addBooktoLibrary(animalFarm);
