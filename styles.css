@@ -1,0 +1,17 @@
+body{
+    margin: 0; 
+}
+
+.content{
+    display: grid; 
+    grid-template-columns: repeat(3, minmax(500px, 1fr));
+}
+
+.card{
+    min-width: 30%; 
+    max-width: 500px; 
+    justify-self: start; 
+    padding: 30px; 
+    margin: 30px; 
+    background-color: beige;
+}
