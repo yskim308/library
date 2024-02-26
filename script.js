@@ -13,16 +13,17 @@ function addBooktoLibrary (book){
     myLibrary.push(book); 
 }
 
+const addBookButton = document.querySelector("#add-button");
+const prompt = document.querySelector("dialog");
+addBookButton.addEventListener('click', ()=>{
+    prompt.showModal(); 
+})
+
 const animalFarm = new Book("Animal Farm", "George Orwell", 200); 
 const book2 = new Book("generic book", "Jesus", 300); 
 addBooktoLibrary(animalFarm);
 addBooktoLibrary(book2); 
 
-myLibrary.forEach((book) =>{
-    console.log(book.title);
-    console.log(book.author);
-    console.log(book.pages);
-})
 
 myLibrary.forEach((book)=>{
     const container = document.querySelector(".content");
@@ -51,7 +52,7 @@ myLibrary.forEach((book)=>{
     const read = document.createElement("button")
     read.classList.add("read"); 
     card.appendChild(read); 
-    
+
     const remove = document.createElement("button")
     remove.classList.add("remove"); 
     card.appendChild(remove); 
