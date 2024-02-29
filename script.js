@@ -64,6 +64,11 @@ function addBookToDOM (book) {
     const remove = document.createElement("button")
     remove.classList.add("remove"); 
     remove.textContent = "remove"; 
+    remove.addEventListener('click', ()=>{
+        const index = myLibrary.findIndex((libraryBook) => libraryBook.title == book.title);
+        myLibrary.splice(index, 1);
+        updateLibrary(); 
+    })
     card.appendChild(remove); 
 
     //add the newly created card to the original container
@@ -95,16 +100,6 @@ document.querySelector("#book-input").addEventListener('submit', (event)=>{
     event.target.reset(); 
     prompt.close();
 })
-
-//event listener for the read and unread button 
-const readButton = document.querySelectorAll(".read-button");
-readButton.forEach((button)=>{
-    button.addEventListener('click', ()=>{
-        button.toggle("read");
-        button.toggle("not-read");
-    })
-})
-
 
 
 //initial creation of books 
