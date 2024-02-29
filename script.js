@@ -1,15 +1,13 @@
 const myLibrary = []; 
 
-function Book (title, author, pages) {
+function Book (title, author, pages, isRead) { //book object constructor
     this.title = title; 
     this.author = author; 
     this.pages = pages; 
-    this.printTitle = function () {
-        console.log(this.title);
-    }
+    this.isRead = isRead; 
 }
 
-function addBooktoLibrary (book){
+function addBooktoLibrary (book){ 
     myLibrary.push(book); 
 }
 
@@ -19,7 +17,7 @@ function updateLibrary (){
     cards.forEach((card)=>{
         card.remove();
     })
-
+    //add books to library 
     myLibrary.forEach((book)=>{
         addBookToDOM(book);
     })
@@ -30,7 +28,7 @@ function addBookToDOM (book) {
     const card = document.createElement("div")
     card.classList.add("card");
 
-    //set text content for new elements inside 'card'
+    //set text content for new elements inside 'card' div
     const title = document.createElement("p")
     title.classList.add("title");
     title.textContent = book.title; 
@@ -49,15 +47,26 @@ function addBookToDOM (book) {
     card.appendChild(pages); 
 
     //add and append the two buttons to the card div 
-    const read = document.createElement("button")
-    read.classList.add("read"); 
+    const read = document.createElement("button"); 
+    read.classList.add("read-button")
+    if (book.isRead === false){
+        read.classList.add("not-read");
+    }
+    else {
+        read.classList.add("read"); 
+    }
+    read.addEventListener('click', ()=>{
+        read.classList.toggle("read");
+        read.classList.toggle("not-read");
+    })
     card.appendChild(read); 
 
     const remove = document.createElement("button")
     remove.classList.add("remove"); 
+    remove.textContent = "remove"; 
     card.appendChild(remove); 
 
-    //now add the newly created card to the original container
+    //add the newly created card to the original container
     container.appendChild(card); 
 }
 
@@ -77,9 +86,9 @@ document.querySelector("#book-input").addEventListener('submit', (event)=>{
     let title = document.querySelector("#title").value; 
     let author = document.querySelector("#author").value;
     let pages = document.querySelector("#pages").value;
-    let checked = document.querySelector('#read').value; 
+    let isRead = document.querySelector('#read').checked; 
     
-    const newBook = new Book(title, author, pages);
+    const newBook = new Book(title, author, pages, isRead);
     addBooktoLibrary(newBook);
     updateLibrary();
 
@@ -87,8 +96,19 @@ document.querySelector("#book-input").addEventListener('submit', (event)=>{
     prompt.close();
 })
 
+//event listener for the read and unread button 
+const readButton = document.querySelectorAll(".read-button");
+readButton.forEach((button)=>{
+    button.addEventListener('click', ()=>{
+        button.toggle("read");
+        button.toggle("not-read");
+    })
+})
+
+
+
 //initial creation of books 
-const animalFarm = new Book("Animal Farm", "George Orwell", 200); 
+const animalFarm = new Book("Animal Farm", "George Orwell", 200, false); 
 const book2 = new Book("generic book", "Jesus", 300); 
 addBooktoLibrary(animalFarm);
 addBooktoLibrary(book2); 

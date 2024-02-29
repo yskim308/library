@@ -5,6 +5,7 @@ body{
 .content{
     display: grid; 
     grid-template-columns: repeat(3, minmax(500px, 1fr));
+    margin: 30px;   
 }
 
 .card{
@@ -12,6 +13,29 @@ body{
     max-width: 500px; 
     justify-self: start; 
     padding: 30px; 
-    margin: 30px; 
     background-color: beige;
+}
+
+.read{
+    width: 80px; 
+    background-color: green;
+}
+
+.read::after{
+    content: "read"; 
+}
+
+.not-read{
+    width: 80px; 
+    background-color: red;
+}
+
+.not-read::after{
+    content: "not read"
+}
+
+.remove{
+    width: 80px; 
+    justify-self: end;
+    margin: 10px;  
 }
