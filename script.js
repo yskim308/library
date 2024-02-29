@@ -111,9 +111,6 @@ const animalFarm = new Book("Animal Farm", "George Orwell", 200, false);
 const book2 = new Book("generic book", "Jesus", 300); 
 addBooktoLibrary(animalFarm);
 addBooktoLibrary(book2); 
-
-
-
 myLibrary.forEach((book)=>{
     addBookToDOM(book);
 })
