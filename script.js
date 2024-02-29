@@ -109,12 +109,8 @@ document.querySelector("#book-input").addEventListener('submit', (event)=>{
 //initial creation of books 
 const animalFarm = new Book("Animal Farm", "George Orwell", 200, false); 
 const book2 = new Book("generic book", "Jesus", 300); 
-const book3 = new Book("book3", "book3 author", 123, true);
-const book4 = new Book("book4", "book4 author", 4999, true);
 addBooktoLibrary(animalFarm);
 addBooktoLibrary(book2); 
-addBooktoLibrary(book3); 
-addBooktoLibrary(book4);
 
 
 
