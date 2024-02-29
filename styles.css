@@ -144,6 +144,53 @@ body{
     background-color: #dc2626;
 }
 
+#exit {
+    display: flex; 
+    justify-content: end;
+    border-radius: 10px; 
+    background: none;
+    border: none;
+}
+#exit svg{
+    width: 30px; 
+    height: 30px; 
+}
+
+dialog{
+    border: none;
+    border-radius: 30px; 
+}
+
+#book-input ul li{
+    list-style-type: none;
+}
+#book-input ul{
+    margin: 0; 
+    padding: 0;
+}
+#book-input li{
+    display: flex;
+    justify-content: space-between;
+}
+#book-input label{
+    margin-right: 20px; 
+    font-size: 20px;
+}
+
+#submit-book{
+    background-color: var(--read);
+    border: none; 
+    border-radius: 20px;
+    font-weight: 600; 
+}
+
+
+.dialog-container{
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+    gap: 20px; 
+}
+
 .footer {
     position: absolute;
     bottom: 0;
