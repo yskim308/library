@@ -46,7 +46,9 @@ function addBookToDOM (book) {
     card.appendChild(author);
     card.appendChild(pages); 
 
-    //add and append the two buttons to the card div 
+    //add and append the two buttons to the button div in card div
+    const buttonDiv = document.createElement("div");  
+    buttonDiv.classList.add("button-div");
     const read = document.createElement("button"); 
     read.classList.add("read-button")
     if (book.isRead === false){
@@ -59,7 +61,7 @@ function addBookToDOM (book) {
         read.classList.toggle("read");
         read.classList.toggle("not-read");
     })
-    card.appendChild(read); 
+    buttonDiv.appendChild(read); 
 
     const remove = document.createElement("button")
     remove.classList.add("remove"); 
@@ -69,7 +71,9 @@ function addBookToDOM (book) {
         myLibrary.splice(index, 1);
         updateLibrary(); 
     })
-    card.appendChild(remove); 
+    buttonDiv.appendChild(remove); 
+
+    card.appendChild(buttonDiv);
 
     //add the newly created card to the original container
     container.appendChild(card); 
@@ -105,8 +109,12 @@ document.querySelector("#book-input").addEventListener('submit', (event)=>{
 //initial creation of books 
 const animalFarm = new Book("Animal Farm", "George Orwell", 200, false); 
 const book2 = new Book("generic book", "Jesus", 300); 
+const book3 = new Book("boko3", "book3 author", 123, true);
+const book4 = new Book("book4", "author", 4999, true);
 addBooktoLibrary(animalFarm);
 addBooktoLibrary(book2); 
+addBooktoLibrary(book3); 
+addBooktoLibrary(book4);
 
 
 
